@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  glpi:
+    image: diouxx/glpi
+    container_name: helpdesk_lab_glpi
+    ports:
+      - "8080:80"
+    volumes:
+      - glpi_data:/var/www/html
+    environment:
+      TIMEZONE: Asia/Ho_Chi_Minh
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.5
+    container_name: helpdesk_lab_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: glpidb
+      MYSQL_USER: glpiuser
+      MYSQL_PASSWORD: glpipass
+    volumes:
+      - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: helpdesk_lab_phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: secret
+
+volumes:
+  glpi_data:
+  db_data:
