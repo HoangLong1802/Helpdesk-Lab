@@ -11,23 +11,6 @@ A self-contained Helpdesk lab simulating real-world entry-level IT Helpdesk task
 - PowerShell, Batch, Bash: Task automation across platforms
 - Markdown: SOP and documentation format
 
-📁 Directory Structure
-
-helpdesk-lab/
-├─ docker-compose.yml           # Docker service configuration
-├─ README.md                    # Project guide and documentation
-├─ scripts/                     # Automation scripts
-│  ├─ map_network_drive.ps1     # PowerShell: network drive mapping
-│  ├─ backup_logs.bat           # Batch: log backup
-│  └─ user_setup.sh             # Bash: Linux user creation
-├─ docs/                        # SOPs and incident casebook
-│  ├─ SOP_User_Onboarding.md
-│  ├─ SOP_Password_Reset.md
-│  ├─ SOP_Printer_Troubleshooting.md
-│  └─ Incident_Casebook.md
-└─ glpi-config/
-   └─ init.sql                  # Sample ticket data for GLPI
-
 🧭 Setup Instructions by Operating System
 
 🪟 Windows
@@ -46,39 +29,28 @@ GLPI: http://localhost:8080
 phpMyAdmin: http://localhost:8081
 
 Import sample data into GLPI:
-
-docker exec -i helpdesk_lab_db mysql -u root -psecret < glpi-config/init.sql
+- docker exec -i helpdesk_lab_db mysql -u root -psecret < glpi-config/init.sql
 
 Run automation scripts:
-
-PowerShell: .\scripts\map_network_drive.ps1 -DriveLetter Z: -NetworkPath "\\SERVER\Share"
-
-CMD: scripts\backup_logs.bat
+- PowerShell: .\scripts\map_network_drive.ps1 -DriveLetter Z: -NetworkPath "\\SERVER\Share"
+- CMD: scripts\backup_logs.bat
 
 🐧 Linux (Ubuntu)
 
 Install Docker and Docker Compose
-
-sudo apt update
-sudo apt install docker.io docker-compose -y
-sudo systemctl enable docker.service
-sudo systemctl start docker.service
+- sudo apt update
+- sudo apt install docker.io docker-compose -y
+- sudo systemctl enable docker.service
+- sudo systemctl start docker.service
 
 If you encounter systemctl: command not found, use:
-
-sudo service docker start
+- sudo service docker start
 
 start the project:
-docker-compose up -d
+- docker-compose up -d
 
 Access services:
-
-GLPI: http://localhost:8080
-
-phpMyAdmin: http://localhost:8081
-
-Initialize sample data:
-
-docker exec -i helpdesk_lab_db mysql -u root -psecret < glpi-config/init.sql
-
-Run Linux script:
+- GLPI: http://localhost:8080
+- phpMyAdmin: http://localhost:8081
+- Initialize sample data:
+- docker exec -i helpdesk_lab_db mysql -u root -psecret < glpi-config/init.sql
