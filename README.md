@@ -1,6 +1,6 @@
 /** Helpdesk Lab Project **/
 
-A self-contained Helpdesk lab simulating real-world entry-level IT Helpdesk tasks. Includes GLPI deployment using Docker, SOP documentation, automation scripts, and an incident casebook. Ideal for showcasing in CVs and GitHub portfolios.
+A self-contained Helpdesk lab simulating real-world entry-level IT Helpdesk tasks. Includes GLPI deployment using Docker, SOP documentation, automation scripts, and an incident casebook.
 
 🖥️ Technologies Used
 
